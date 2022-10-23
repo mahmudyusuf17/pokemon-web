@@ -1,3 +1,19 @@
-.homepage{
+body{
     display: block;
+    background-image: url("@/assets/image/bg-pokemon.png");
+}
+
+.pm-logo__pokemon{
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    padding: 20px 0;
+    
+    @media (max-width: 900) {
+        width: 250px;
+    }
+}
+
+.pm-card__pokemon{
+
 }
