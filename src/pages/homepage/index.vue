@@ -5,6 +5,7 @@
       <div class="basis-1/4 mb-4 md:mb-0">
         <select v-model="filterPokemon" placeholder="Filter" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option disabled value="">Select type</option>
+          <option value="">All</option>
           <option v-for="(type, indexType) in typeList" :key="indexType" :value="type.name">{{ type.name }}</option>
         </select>
       </div>
@@ -17,7 +18,7 @@
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 pb-4">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer pm-card__pokemon" v-for="(pokemon, index) in filtered_pokemons" :key="index">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer pm-card__pokemon" v-for="(pokemon, index) in filteredPokemons" :key="index">
             <RouterLink :to="`/detail/${pokemon.name}`">
             <img class="w-full" :src="`${urlImage}${getId(pokemon)}.png`" :alt="pokemon.name">
             <div class="px-6 py-4 text-center">
@@ -70,11 +71,15 @@ export default{
   computed:{
       ...mapState(pokemonStore, ['pokemonList', "nextPage", 'previous', 'detailList', 'typeList']),
 
-      filtered_pokemons() {
+      filteredPokemons() {
         return this.pokemonList.filter((item) => {
-          console.log(item)
+            return item.type.filter((data) => {
+            return data.type.name.includes(this.filterPokemon);
+          }).length>0;
+          // }
+        }).filter((item)=> {
           return item.name.includes(this.search);
-        });
+        })
       },
   },
 
