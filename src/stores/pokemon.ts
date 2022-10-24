@@ -8,7 +8,9 @@ const baseUrl = import.meta.env.VITE_BASEURL;
 export const pokemonStore = defineStore("dataPokemon", {
     state: () => ({
       pokemonList: [],
+      detailList: [],
       pokemonDetail: [],
+      typeList: [],
       nextPage: "",
       previous: "",
       offset: 0,
@@ -16,10 +18,14 @@ export const pokemonStore = defineStore("dataPokemon", {
     }),
 
     actions: {
-      async getPokemon() {
-        const api = `${baseUrl}?offset=${this.offset}&limit=${this.limit}`;
+      async getPokemonData(api: any) {
+        var urlApi = `${baseUrl}pokemon?offset=${this.offset}&limit=${this.limit}`;
+        
+        if(api != null){
+          urlApi = api
+        }
 
-        const response = await axios.get(api).then((response) => {
+        const response = await axios.get(urlApi).then((response) => {
           this.pokemonList = response.data.results;
           this.nextPage = response.data.next;
           this.previous = response.data.previous;
@@ -29,10 +35,19 @@ export const pokemonStore = defineStore("dataPokemon", {
       },
 
       async getPokemonDetail(name: any){
-        const api = `${baseUrl}/${name}`
+        const api = `${baseUrl}pokemon/${name}`
 
         await axios.get(api).then((response) => {
           this.pokemonDetail = response.data;
+        })
+      },
+
+
+      async getType(){
+        const api = `${baseUrl}type`
+
+        await axios.get(api).then((response) => {
+          this.typeList = response.data.results;
         })
       }
     },

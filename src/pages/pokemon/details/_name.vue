@@ -1,6 +1,8 @@
 <template>
   <div class="pm-detail-page">
-    <img src="@/assets/image/logo-pokemon.png" class="pm-logo__pokemon"/>
+    <RouterLink to="/">
+      <img src="@/assets/image/logo-pokemon.png" class="pm-logo__pokemon"/>
+    </RouterLink>
         <div class="pm-pokemon__detail mb-5">
             <img class="pm-image__pokemon" :src="pokemonDetail.sprites?.front_default" alt="image description">
             <h2 class="text-4xl font-bold">{{ pokemonDetail.name }}</h2>
