@@ -5,7 +5,7 @@
             <img class="pm-image__pokemon" :src="pokemonDetail.sprites?.front_default" alt="image description">
             <h2 class="text-4xl font-bold">{{ pokemonDetail.name }}</h2>
         </div>
-        <div class="flex flex-row md:block">
+        <div class="md:flex flex-row block">
           <div class="pm-detail__left basis-1/2">
             <div class="pm-detail__karakter text-xl">
               <span class="font-bold">Weight: </span>
