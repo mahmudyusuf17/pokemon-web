@@ -4,7 +4,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 pb-4">
             <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer pm-card__pokemon" v-for="(pokemon, index) in pokemonList" :key="index">
                 <RouterLink :to="`/detail/${pokemon.name}`">
-                <img class="w-full" :src="`${urlImage}/${index+1}.png`" alt="Sunset in the mountains">
+                <img class="w-full" :src="`${urlImage}/${index+1}.png`" :alt="pokemon.name">
                 <div class="px-6 py-4 text-center">
                     <div class="font-bold text-xl mb-2">{{ pokemon.name }}</div>
                 </div>

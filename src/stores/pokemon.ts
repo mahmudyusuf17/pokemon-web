@@ -32,7 +32,6 @@ export const pokemonStore = defineStore("dataPokemon", {
         const api = `${baseUrl}/${name}`
 
         await axios.get(api).then((response) => {
-          console.log(response.data)
           this.pokemonDetail = response.data;
         })
       }
