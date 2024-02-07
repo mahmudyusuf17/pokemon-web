@@ -19,11 +19,11 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 pb-4">
         <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer pm-card__pokemon" v-for="(pokemon, index) in filteredPokemons" :key="index">
-            <RouterLink :to="`/detail/${pokemon.name}`">
-            <img class="w-full" :src="`${urlImage}${getId(pokemon)}.png`" :alt="pokemon.name">
-            <div class="px-6 py-4 text-center">
-                <div class="font-bold text-xl mb-2">{{ pokemon.name }}</div>
-            </div>
+            <RouterLink :to="`/detail/${pokemon.name}`" class="center">
+              <img class="max-h-[150px] w-auto pm-card_image" :src="`${urlImage}${getName(pokemon)}.jpg`" :alt="pokemon.name">
+              <div class="px-6 py-4 text-center">
+                  <div class="font-bold text-xl mb-2">{{ pokemon.name }}</div>
+              </div>
             </RouterLink>
         </div>
     </div>
@@ -84,8 +84,9 @@ export default{
   },
 
   methods:{
-    getId(pokemon) {
-      return Number(pokemon.url.split("/")[6]);
+    getName(pokemon) {
+      // return Number(pokemon.url.split("/")[6]);
+      return pokemon.name
     },
   },
 }

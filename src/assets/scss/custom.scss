@@ -29,9 +29,22 @@ body{
     margin-top: 5px;
 }
 
-.pm-card__pokemon:hover{
-    border: 2px solid;
-    border-color: rgb(255 204 8);
-    transform: translateY(-2%);
-    box-shadow: 0 22px 30px -15px rgb(44 112 174 / 20%);
+.pm-card__pokemon{
+    &:hover{
+        border: 2px solid;
+        border-color: rgb(255 204 8);
+        transform: translateY(-2%);
+        box-shadow: 0 22px 30px -15px rgb(44 112 174 / 20%);
+        
+        .pm-card_image{
+            mix-blend-mode: multiply;
+        }
+    }
+    
+    .pm-card_image{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        mix-blend-mode: multiply;
+    }
 }
